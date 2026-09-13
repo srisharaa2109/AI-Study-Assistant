@@ -38,7 +38,7 @@ if uploaded_file is not None:
         text += page.get_text() + "\n"
 
     # Split text into chunks
-    chunk_size = 1000
+    chunk_size = 1500
     chunks = [
         text[i:i + chunk_size]
         for i in range(0, len(text), chunk_size)
@@ -80,7 +80,7 @@ if uploaded_file is not None:
             # Search relevant chunks
             results = collection.query(
                 query_embeddings=[question_embedding],
-                n_results=min(3, len(chunks))
+                n_results=min(5, len(chunks))
             )
 
             st.subheader("Answer / Relevant Information")
