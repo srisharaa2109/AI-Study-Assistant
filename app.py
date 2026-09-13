@@ -38,11 +38,19 @@ if uploaded_file is not None:
         text += page.get_text() + "\n"
 
     # Split text into chunks
-    chunk_size = 1500
-    chunks = [
-        text[i:i + chunk_size]
-        for i in range(0, len(text), chunk_size)
-        if text[i:i + chunk_size].strip()
+    chunk_size = 2000
+    overlap = [
+    chunks = []
+    start = 0
+    while start<len(text):
+        end = start + chunk_size
+        chunk = text[start:end]
+
+    if chunk.strip():
+        chunks.append(chunk)
+
+    start += chunk_size - overlap
+   
     ]
 
     if chunks:
